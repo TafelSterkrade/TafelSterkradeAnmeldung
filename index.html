@@ -1,0 +1,160 @@
+<!-- Index.html 17.08.2025 -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tafel App</title>
+
+    <link rel="stylesheet" href="Global.css">
+    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="Form.css">
+    <link rel="stylesheet" href="Popup.css">
+ 
+ 
+  <script>
+//    const loggedInUsernameForTesting = "ab"; // Testmodus
+  </script>
+
+  </head>
+  <body>
+
+      
+    <section id="login-section" class="app-section hidden">
+
+      <div id="loginHeader">
+        <div class="titleArea">
+          <h1>Tafel Sterkrade Login</h1>
+          <div class="version" id="version-login">Version 5.08.17-1</div>
+                    <img src="TafelLogo.png" alt="Logo">
+        </div>
+      </div>
+
+      <input type="text" id="Anmelde" placeholder="Anmeldenamen eingeben">
+      <button id="login-button">Anmelden</button>
+      <p id="status">Bitte Anmeldenamen eingeben</p>
+      <p id="message"></p>
+    </section>
+
+      
+    <section id="formular-section" class="app-section hidden">
+        <div id="formHeader">
+        <div class="titleArea">
+          <h1>Tafel Sterkrade Anmeldung</h1>
+          <div class="version" id="version-form">Version 5.08.17-1</div>
+                    <img src="TafelLogo.png" alt="Logo">
+        </div>
+      </div>
+
+      <p id="greeting" style="text-align:left; font-weight:bold;"></p>
+      <div id="hinweis-label">
+        Bitte wähle einen Termin und passe deine Funktion an.<br>
+        Änderungen werden nur gespeichert, wenn du auf <strong>"Senden"</strong> klickst.
+      </div>
+
+        <div id="loading-overlay" class="loading-state hidden">
+        <p id="loading-text">Daten werden geladen...</p>
+        <div class="loading-step">
+          <span>Formulardaten werden geladen …</span>
+          <span id="spinner-formdata" class="spinner small"></span>
+        </div>
+        <div class="loading-step">
+          <span>Anmeldungen werden geladen …</span>
+          <span id="spinner-anmeldungen" class="spinner small"></span>
+        </div>
+        <div class="loading-step">
+          <span>Anmeldeinfos werden geladen …</span>
+          <span id="spinner-infos" class="spinner small"></span>
+        </div>
+      </div>
+
+    
+      <div id="termin-options"></div>
+
+      <div class="funktionInfoBereich">
+        <div id="funktion-label"></div>
+        <div id="fmc-options"></div>
+      </div>
+      <br>
+
+      <div class="AnmeldeInfoBereich">
+        <div id="anmeldeInfoTermin">AnmeldeInfo</div>
+        <div id="anmeldeInfoFunc">0 Fahrer, 0 Ausgabe, 0 Registratur</div>
+        <button id="info-button" onclick="tagesRapport()">TagesRapport</button>
+      </div>
+
+      <br>
+      <button id="submit-button" onclick="submitForm()" disabled>Senden</button>
+      <p id="waiting-status"></p>
+      <p id="status"></p>
+      <div id="details"></div>
+
+ 
+       
+      <div id="overlaySubmit" class="hidden">
+        <div id="overlaySubmitContent">
+          <div id="overlaySubmitText">🕓 Eingaben werden gespeichert…</div>
+          <button id="closeOverlaySubmit" onclick="closeOverlaySubmit()">OK</button>
+        </div>
+      </div>
+
+       
+      <div id="overlayRapport">
+        <div id="overlayRapport-content">
+          <h2 id="overlayRapport-title">Tagesrapport</h2>
+
+          <h3 id="scrollboxAnmeldungen-title">Anmeldungen:</h3>
+          <div class="scrollbox scrollbox-anmeldungen">
+            <table id="scrollboxAnmeldungen-table"></table>
+          </div>
+
+          <h3 id="scrollboxGeburtstage-title">Anstehende Geburtstage:</h3>
+          <div class="scrollbox scrollbox-geburtstage">
+            <table id="scrollboxGeburtstage-table"></table>
+          </div>
+
+          <dl id="downloadLink_Tagesrapport"></dl>
+          <div id="download-spinner-container" class="hidden">
+            <span class="spinner small"></span>
+            <span id="download-spinner-text"></span>
+          </div>
+ 
+          <dl id="downloadLinkXLS_Tagesrapport"></dl>
+          <div id="download-spinner-container" class="hidden">
+            <span class="spinner small"></span>
+            <span id="download-spinner-text"></span>
+          </div>
+
+          <div class="overlayRapport-buttons">
+            <button onclick="closeOverlayRapport()">Schließen</button>
+            <button onclick="downloadLinkRapport()">PDF-Datei</button>
+            <button onclick="downloadLinkXLSRapport()">XLSX-Datei</button>
+          </div>
+        </div>
+      </div>
+
+       
+      <div id="popup" style="display: none;">
+        <div id="popup-content">
+          <p>  </p>
+        <button onclick="closePopup()">Schließen</button>
+        </div>
+      </div>
+
+    </section>
+
+    <div id="loading-initial" style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+      <p>Login wird geladen...</p>
+      <div class="spinner"></div> </div>
+    
+    
+    
+    <script src="Start.js"></script>
+    <script src="Login.js"></script>
+    <script src="Form.js"></script>
+    <script src="Rapport.js"></script>
+
+
+  </body>
+</html>

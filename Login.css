@@ -1,0 +1,41 @@
+/* --- Login.css 26.05.2025  ---------*/
+
+/* Diese Sektion ist nur für den Login-Bereich spezifisch */
+#login-section {
+    text-align: left; /* Alles linksbündig */
+}
+
+/* Input-Felder im Login-Bereich */
+input[type="text"]#Anmelde {
+    width: 90%;
+    max-width: 350px;
+    margin-bottom: 0.8em;
+    text-align: left; /* Sicherstellen, dass Text im Feld links ist */
+    margin-left: 0; /* Ggf. vorhandenen Zentrier-Margin entfernen */
+    margin-right: auto;
+    display: block; /* Für volle Breite */
+}
+
+/* Button im Login-Bereich */
+#login-button {
+    width: 90%;
+    max-width: 350px;
+    margin-left: 0; /* Links ausrichten */
+    margin-right: auto;
+    display: block; /* Für volle Breite */
+}
+
+/* Status- und Nachrichten-Text */
+#status, #message {
+    text-align: left !important; /* Links statt zentriert */
+    margin-left: 0; /* Links ausrichten */
+    margin-top: 0.8em;
+    font-size: 0.9em;
+    color: #555;
+}
+
+#message {
+    color: red;
+    font-weight: bold;
+}
+
