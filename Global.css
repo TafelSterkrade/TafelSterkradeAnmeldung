@@ -1,4 +1,4 @@
-/* --- Global.css 16.08.2025  ---------*/
+/* --- Global.css 21.08.2025  ---------*/
 
  /* Basis-Reset und mobile Optimierung */
   html, body {
@@ -32,22 +32,25 @@ body {
 
 /* Stil für den Lade-Container */
 #loading-initial {
-    text-align: center;
-    padding: 100px 20px;
-    font-family: Arial, sans-serif;
-    color: #555;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 50px auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid yellow;
 }
 
 /* Stil für den Text "Wird geladen..." */
 #loading-initial p {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #004d40; /* Dunkelgrün, passend zum Tafel-Logo */
+    color: #fff; 
     margin-bottom: 20px;
 }
 
