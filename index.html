@@ -1,4 +1,4 @@
-<!-- index.html 22.08.2025 -->
+<!-- index.html 02.09.2025 -->
 
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,7 @@
       <div id="loginHeader">
         <div class="titleArea">
           <h1>Tafel Sterkrade Login</h1>
-          <div class="version" id="version-login">Version 5.08.22-1</div>
+          <div class="version" id="version-login">Version 5.09.02-1</div>
                     <img src="TafelLogo.png" alt="Logo">
         </div>
       </div>
@@ -46,7 +46,7 @@
         <div id="formHeader">
         <div class="titleArea">
           <h1>Tafel Sterkrade Anmeldung</h1>
-          <div class="version" id="version-form">Version 5.08.22-1</div>
+          <div class="version" id="version-form">Version 5.09.02-1</div>
                     <img src="TafelLogo.png" alt="Logo">
         </div>
       </div>
@@ -124,7 +124,7 @@
             <span id="download-spinner-text"></span>
           </div>
  
-          <dl id="downloadLinkXLS_Tagesrapport"></dl>
+          <dl id="sendMailXLS_Tagesrapport"></dl>
           <div id="download-spinner-container" class="hidden">
             <span class="spinner small"></span>
             <span id="download-spinner-text"></span>
@@ -133,7 +133,7 @@
           <div class="overlayRapport-buttons">
             <button onclick="closeOverlayRapport()">Schließen</button>
             <button onclick="downloadLinkRapport()">PDF-Datei</button>
-            <button onclick="downloadLinkXLSRapport()">XLSX-Datei</button>
+            <button onclick="sendmailXLSRapport()">XLSX-Datei</button>
           </div>
         </div>
       </div>
@@ -148,6 +148,7 @@
 
     </section>
    
+    <script src="Backend.js"></script>
     <script src="Start.js"></script>
     <script src="Login.js"></script>
     <script src="Form.js"></script>
