@@ -1,4 +1,4 @@
-// Rapport.js 15.08.2025
+// Rapport.js 02.09.2025
 
 //-----------------------------------------------
 function tagesRapport() {
@@ -113,7 +113,7 @@ function downloadLinkRapport() {
 // ----------------------------------
 function downloadLinkXLSRapport() {
 // ----------------------------------
-  const downloadLinkElement = document.getElementById('downloadLinkXLS_Tagesrapport');
+  const downloadLinkElement = document.getElementById('sendMailXLS_Tagesrapport');
   const downloadSpinnerContainer = document.getElementById('download-spinner-container');
   const downloadSpinner = downloadSpinnerContainer.querySelector('.spinner');
   const downloadSpinnerText = document.getElementById('download-spinner-text');
@@ -149,5 +149,36 @@ function downloadLinkXLSRapport() {
   });
 }
 
+// ----------------------------------
+function sendmailXLSRapport() {
+// ----------------------------------
+  const downloadLinkElement = document.getElementById('sendMailXLS_Tagesrapport');
+  const downloadSpinnerContainer = document.getElementById('download-spinner-container');
+  const downloadSpinner = downloadSpinnerContainer.querySelector('.spinner');
+  const downloadSpinnerText = document.getElementById('download-spinner-text');
+
+  downloadLinkElement.innerHTML = '';
+  downloadSpinnerContainer.classList.remove('hidden');
+  downloadSpinnerText.textContent = "XLSX-Datei wird erstellt...";
+  downloadSpinner.style.display = 'inline-block';
+
+  const sheetName = "Tagesrapport";
+  const filename = "Rapport " + aktTermin + ".xlsx";
+    console.log("sendmailXLSRapport:", sheetName, filename, formUsername);
+
+  apiCall('exportSheetToXlsxAndSendMail', { sheetName, filename, Anmelde: formUsername })
+  .then(function(mailsuccess) {
+    downloadSpinnerContainer.classList.add('hidden');
+    downloadSpinner.style.display = 'none';
+    downloadLinkElement.textContent = mailsuccess.message;
+
+  })
+  .catch(function(error) {
+    downloadSpinnerContainer.classList.add('hidden');
+    downloadSpinner.style.display = 'none';
+    downloadLinkElement.textContent = "Fehler beim Erstellen des XLSX-Links.";
+    console.error(`Fehler beim XLSX-Export von ${sheetName}:`, error);
+  });
+}
 
 
