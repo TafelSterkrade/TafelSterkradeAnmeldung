@@ -1,4 +1,4 @@
-// Form.js 15.08.2025
+// Form.js 02.09.2025
 
 let formUsername = ''; // Benutzernamen im Formularbereich (wird von der Login-Sektion übergeben)
 let terminDaten = [];
@@ -223,7 +223,7 @@ function updateAnmeldeInfo() {
     aktTermin = datum;
 
     document.getElementById(`downloadLink_Tagesrapport`).textContent =  " ";
-    document.getElementById(`downloadLinkXLS_Tagesrapport`).textContent =  " ";
+    document.getElementById(`sendMailXLS_Tagesrapport`).textContent =  " ";
 
     if (anmeldeInfoTermin && anmeldeInfoFunc && datum && alleAnmeldeInfosCache[datum] && alleAnmeldeInfosCache[datum].anmeldungInfo) {
       console.log("Anmeldeinfo gefunden für:", datum, "Info:", alleAnmeldeInfosCache[datum].anmeldungInfo);
