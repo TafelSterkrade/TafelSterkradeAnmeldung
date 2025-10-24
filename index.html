@@ -1,4 +1,4 @@
-<!-- index.html 02.09.2025 -->
+<!-- index.html 24.10.2025 -->
 
 <!DOCTYPE html>
 <html>
@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tafel App</title>
 
-    <link rel="stylesheet" href="Global.css">
-    <link rel="stylesheet" href="Login.css">
-    <link rel="stylesheet" href="Form.css">
-    <link rel="stylesheet" href="Popup.css">
+    <link rel="stylesheet" href="css/Global.css">
+    <link rel="stylesheet" href="css/Login.css">
+    <link rel="stylesheet" href="css/Form.css">
+    <link rel="stylesheet" href="css/Popup.css">
  
  
   <script>
@@ -20,20 +20,23 @@
   </head>
   <body>
   
-    <div id="loading-initial" style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
-      <p>Anmeldung wird geladen...</p>
-    <div class="spinner"></div> </div>
+<!-- Laden Anmeldung-->
+  <div id="loading-initial" style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+    <p>Anmeldung wird geladen...</p>
+  <div class="spinner"></div> </div>
 
-
-    <section id="login-section" class="app-section">
-
-      <div id="loginHeader">
-        <div class="titleArea">
-          <h1>Tafel Sterkrade Login</h1>
-          <div class="version" id="version-login">Version 5.09.02-1</div>
-                    <img src="TafelLogo.png" alt="Logo">
-        </div>
+<!-- App-Container mit Header-->
+  <div id="app-container">
+    <div id="tafelHeader">
+      <div class="titleArea">
+        <h1 id="header-title">Tafel Sterkrade</h1>
+        <div class="version" id="version-login">Version 5.10.24-1</div>
+                  <img src="TafelLogo.png" alt="Logo">
       </div>
+    </div>
+
+<!-- login-section-->
+    <section id="login-section" class="app-section">
 
       <input type="text" id="Anmelde" placeholder="Anmeldenamen eingeben">
       <button id="login-button">Anmelden</button>
@@ -41,15 +44,9 @@
       <p id="message"></p>
     </section>
 
-      
+  
+<!-- formular-section-->
     <section id="formular-section" class="app-section hidden">
-        <div id="formHeader">
-        <div class="titleArea">
-          <h1>Tafel Sterkrade Anmeldung</h1>
-          <div class="version" id="version-form">Version 5.09.02-1</div>
-                    <img src="TafelLogo.png" alt="Logo">
-        </div>
-      </div>
 
       <p id="greeting" style="text-align:left; font-weight:bold;"></p>
       <div id="hinweis-label">
@@ -57,7 +54,7 @@
         Änderungen werden nur gespeichert, wenn du auf <strong>"Senden"</strong> klickst.
       </div>
 
-        <div id="loading-overlay" class="loading-state hidden">
+      <div id="loading-overlay" class="loading-state hidden">
         <p id="loading-text">Daten werden geladen...</p>
         <div class="loading-step">
           <span>Formulardaten werden geladen …</span>
@@ -73,62 +70,60 @@
         </div>
       </div>
 
-    
+
       <div id="termin-options"></div>
 
       <div class="funktionInfoBereich">
         <div id="funktion-label"></div>
         <div id="fmc-options"></div>
       </div>
-      <br>
 
-      <div class="AnmeldeInfoBereich">
-        <div id="anmeldeInfoTermin">AnmeldeInfo</div>
-        <div id="anmeldeInfoFunc">0 Fahrer, 0 Ausgabe, 0 Registratur</div>
-        <button id="info-button" onclick="tagesRapport()">TagesRapport</button>
-      </div>
-
-      <br>
       <button id="submit-button" onclick="submitForm()" disabled>Senden</button>
       <p id="waiting-status"></p>
       <p id="status"></p>
       <div id="details"></div>
 
- 
-       
-      <div id="overlaySubmit" class="hidden">
+      <div class="AnmeldeInfoBereich">
+        <div id="anmeldeInfoTermin">AnmeldeInfo</div>
+        <div id="anmeldeInfoFunc">0 Fahrer, 0 Ausgabe, 0 Registratur</div>
+        <button id="rapport-button" onclick="tagesRapport()">TagesRapport</button>
+      </div>
+
+      <div class="button-group">
+        <button id="helferliste-button" onclick="helferlisteOeffnen()">Helferliste</button>
+        <button id="geburtstage-button" onclick="geburtstageOeffnen()">Geburtstage</button>
+      </div>
+    </section>
+  </div>
+
+<!-- overlay Submit-->
+    <div id="overlaySubmit" class="hidden">
         <div id="overlaySubmitContent">
           <div id="overlaySubmitText">🕓 Eingaben werden gespeichert…</div>
           <button id="closeOverlaySubmit" onclick="closeOverlaySubmit()">OK</button>
         </div>
-      </div>
+    </div>
 
-       
-      <div id="overlayRapport">
+<!-- overlay Rapport-->
+    <div id="overlayRapport">
         <div id="overlayRapport-content">
           <h2 id="overlayRapport-title">Tagesrapport</h2>
 
-          <h3 id="scrollboxAnmeldungen-title">Anmeldungen:</h3>
+          <h4 id="scrollboxAnmeldungen-title">Anmeldungen:</h4>
+          <p id="scrollboxAnmeldungenInfoFunc" class="scrollboxZusatzInfo" >0 Fahrer, 0 Ausgabe, 0 Registratur</p>
           <div class="scrollbox scrollbox-anmeldungen">
             <table id="scrollboxAnmeldungen-table"></table>
           </div>
 
-          <h3 id="scrollboxGeburtstage-title">Anstehende Geburtstage:</h3>
-          <div class="scrollbox scrollbox-geburtstage">
-            <table id="scrollboxGeburtstage-table"></table>
+          <h4 id="scrollboxAbmeldungen-title">ohne Anmeldung:</h4>
+          <p id="scrollboxAbmeldungenInfoFunc" class="scrollboxZusatzInfo" >0 Abmeldungen, 0 ohne Meldung</p>
+          <div class="scrollbox scrollbox-abmeldungen">
+            <table id="scrollboxAbmeldungen-table"></table>
           </div>
 
-          <dl id="downloadLink_Tagesrapport"></dl>
-          <div id="download-spinner-container" class="hidden">
-            <span class="spinner small"></span>
-            <span id="download-spinner-text"></span>
-          </div>
- 
-          <dl id="sendMailXLS_Tagesrapport"></dl>
-          <div id="download-spinner-container" class="hidden">
-            <span class="spinner small"></span>
-            <span id="download-spinner-text"></span>
-          </div>
+          <div id="downloadLink_Tagesrapport"></div>
+  
+          <div id="sendMailXLS_Tagesrapport"></div>
 
           <div class="overlayRapport-buttons">
             <button onclick="closeOverlayRapport()">Schließen</button>
@@ -136,23 +131,77 @@
             <button onclick="sendmailXLSRapport()">XLSX-Datei</button>
           </div>
         </div>
-      </div>
+    </div>
 
-       
-      <div id="popup" style="display: none;">
+<!-- overlay Helferliste-->
+    <div id="overlayHelferliste" style="display: none;">
+      <div id="overlayHelferliste-content">
+        <div id="overlayHelferliste-title"></div>
+
+        <h3 id="scrollboxHelferliste-title">Helfer: 0</h3>
+
+        <div class="scrollbox scrollbox-helferliste">
+          <table>
+            <thead>
+              <tr>
+                <th id="header-name" onclick="sortHelferListe('Name')">Name</th>
+                <th id="header-vorname" onclick="sortHelferListe('Vorname')">Vorname</th>
+                <th id="header-status" onclick="sortHelferListe('Status')">Status</th>
+                <th id="header-mobil" onclick="sortHelferListe('Mobil')">Mobil</th>
+              </tr>
+            </thead>
+            <tbody id="scrollboxHelferliste-table">
+              </tbody>
+          </table>
+        </div>
+        
+        <div id="downloadLink_Helferliste"></div>
+  
+        <div id="sendMailXLS_Helferliste"></div>
+
+        <div class="overlayHelferliste-buttons">
+            <button onclick="closeOverlayHelferliste()">Schließen</button>
+            <button onclick="downloadLinkHelferliste()">PDF-Datei</button>
+            <button onclick="sendmailXLSHelferliste()">XLS-Datei</button>
+        </div>
+
+      </div>
+    </div>      
+
+<!-- overlay Geburtstage-->
+    <div id="overlayGeburtstage">
+      <div id="overlayGeburtstage-content">
+        <div id="overlayGeburtstage-title">Geburtstage der Tafel-Helfer</div>
+
+        <h4 id="scrollboxGeburtstage-title">bevorstehende Geburtstage:</h4>
+        <div class="scrollbox scrollbox-geburtstage">
+          <table id="scrollboxGeburtstage-table"></table>
+        </div>
+
+        <button class="close-button" onclick="closeOverlayGeburtstage()">Schließen</button>
+        
+      </div>
+    </div>
+
+<!-- popup -->
+    <div id="popup" style="display: none;">
         <div id="popup-content">
           <p>  </p>
         <button onclick="closePopup()">Schließen</button>
         </div>
-      </div>
+    </div>
 
-    </section>
-   
-    <script src="Backend.js"></script>
-    <script src="Start.js"></script>
-    <script src="Login.js"></script>
-    <script src="Form.js"></script>
-    <script src="Rapport.js"></script>
+
+    
+
+    <script src="APPS_SCRIPT_URL.js"></script>
+    <script src="js/Start.js"></script>
+    <script src="js/Global.js"></script>
+    <script src="js/Login.js"></script>
+    <script src="js/Form.js"></script>
+    <script src="js/Rapport.js"></script>
+    <script src="js/Helferliste.js"></script>
+    <script src="js/Geburtstage.js"></script>
 
 
   </body>
