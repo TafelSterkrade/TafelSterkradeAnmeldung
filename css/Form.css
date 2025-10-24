@@ -1,0 +1,208 @@
+/* --- Form.css 16.10.2025 ---------*/
+
+/* Spezifische Stile für den Formular-Bereich */
+
+/* Willkommensgruß */
+#greeting {
+  font-size: 1.0em;
+  text-align: left;
+  font-weight: bold;
+  color: #333;
+  margin-top: 0.0em; /* Näher an Überschrift */
+  margin-bottom: 0.0em;
+}
+
+#hinweis-label {
+ font-style: italic;
+ color: #555;
+ text-align: left;
+ font-size: 0.7em;
+ margin-top: 0.0em; /* Näher an Überschrift */
+ margin-bottom: 0.2em;
+}
+
+/* Termin-Optionen (Radio-Buttons) */
+#termin-options label {
+    display: block;
+    margin-bottom: 0.2em;
+    text-align: left;
+    font-size: 1.0em;
+}
+
+#termin-options input[type="radio"] {
+    margin-right: 0.5em;
+    transform: scale(1.1);
+    vertical-align: middle;
+}
+
+/* Bereich für FCM */
+.funktionInfoBereich {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5em; /* Näher an Funktion-Label */
+}
+
+#funktion-label {
+    font-style: italic;
+    color: #555;
+    text-align: left;
+    font-size: 0.8em;
+}
+
+/* Funktion-Multiple-Choice (FMC) Buttons */
+#fmc-options {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    align-items: stretch; /* Sorgt dafür, dass alle Items in der Reihe die gleiche Höhe haben */
+    padding: 0px;
+}
+
+.fmc-button {
+    padding: 4px 3px;
+    font-size: 0.7em;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+    white-space: normal; /* Erlaubt Textumbruch IM Button */
+    text-align: center; /* Zentriert den Text im Button */
+    flex-grow: 0; /* WACHSEN NICHT über ihre Mindestbreite hinaus */
+    flex-shrink: 1; /* ERLAUBT das Schrumpfen, um in die Zeile zu passen */
+    min-width: 50px; /* Eine Mindestbreite, damit Buttons nicht zu klein werden. Passe dies ggf. an. */
+    box-sizing: border-box; /* Stellt sicher, dass Padding in der Breite enthalten ist */
+    display: flex; /* Machen Sie den Button selbst zu einem Flex-Container */
+    align-items: center; /* Zentriert den Inhalt vertikal im Button */
+    justify-content: center; /* Zentriert den Inhalt horizontal im Button (ersetzt text-align) */
+}
+
+.fmc-button:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.fmc-button.aktiv {
+    background-color: #007bff;
+    color: white;
+}
+
+.AnmeldeInfoBereich {
+    background-color: #eef;
+    border-left: 3px solid #f0ad4e;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    gap: 0.2em;
+    padding-left: 5px
+}
+#anmeldeInfoTermin {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#rapport-button {
+    width: auto;
+    padding: 0.5em 2em;
+    font-size: 0.9em;
+    align-self: flex-start;
+    background-color: #007bff;
+}
+#rapport-button:hover {
+    background-color: #138496;
+}
+
+
+/* Einzeilige Anmelde-Info-Meldung */
+#anmeldeInfoMeldung {
+    margin-top: 0.4em;
+    font-style: italic;
+    color: #555;
+    text-align: left;
+    border-left: 3px solid #f0ad4e;
+    padding-left: 0.6em;
+    background-color: #eef; 
+    border-radius: 3px;
+    padding: 0.5em 0.6em;
+    font-size: 0.9em;
+}
+
+/* Submit-Button */
+#submit-button {
+    margin-top: 0.5em;
+    background-color: #28a745;
+    width: 100%;
+    max-width: none;
+}
+
+#submit-button:hover:enabled {
+    background-color: #218838;
+}
+
+#submit-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    color: #666;
+    box-shadow: none;
+}
+
+/* Status- und Warte-Nachrichten */
+#status, #waiting-status {
+    text-align: center;
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+#status {
+    color: #28a745;
+}
+
+#waiting-status {
+    color: #6c757d;
+}
+
+/* Geänderte Einträge */
+.changed {
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+/* Details der gespeicherten Einträge */
+#details {
+    margin-top: 1em;
+    font-size: 0.85em;
+    text-align: left;
+    border-top: 1px dashed #eee;
+    padding-top: 0.8em;
+}
+
+.saved-item, .error-item {
+    margin-bottom: 0.3em;
+}
+
+.button-group {
+    /* Aktiviert das Flexbox-Layout */
+    display: flex;
+    gap: 10px; /* Sorgt für einen kleinen Abstand zwischen den Buttons */
+    margin-left: 5px; 
+    margin-top: 25px; 
+    margin-bottom: 15px;
+}
+
+#helferliste-button #geburtstage-button {
+    width: auto;
+    padding: 0.5em 2em;
+    font-size: 0.9em;
+    align-self: flex-start;
+    background-color: #007bff;
+    margin-top: 10px; /* Abstand nach dem Senden-Button */
+}
+#helferliste-button:hover #geburtstage-button:hover {
+    background-color: #138496;
+}

@@ -1,0 +1,359 @@
+/* --- Popup.css 22.10.2025 ---------*/
+/* Spezifische Stile für die PopUps */
+
+/* Popups allgemein */
+#popup {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#popup-content {
+    background-color: white;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 300px;
+    width: 95%;
+}
+
+#popup-content p {
+    font-size: 1em;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+#popup-content button {
+    margin-top: 0.8em;
+    width: auto;
+    padding: 0.7em 1.2em;
+    font-size: 0.9em;
+    background-color: #007bff;
+}
+
+#popup-content pre {
+    text-align: left;
+    white-space: pre-wrap;
+    font-family: monospace;
+    background-color: #eee;
+    padding: 0.6em;
+    border-radius: 4px;
+    margin-top: 0.8em;
+    max-height: 250px;
+    overflow-y: auto;
+    font-size: 0.9em;
+}
+
+/* popup Overlay Tagesrapport*/
+#overlayRapport {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#overlayRapport-content {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 350px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+}
+
+#overlayRapport-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 5px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.overlayRapport-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;               
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+
+.scrollbox {
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.scrollbox-anmeldungen {
+  max-height: 100px;
+}
+.scrollbox-abmeldungen {
+  max-height: 100px;
+}
+
+.scrollbox table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scrollboxZusatzInfo {
+    margin: 0px 0 10px 0; 
+    text-align: left;
+    color: #333;
+    font-size: 0.8em;
+    font-style: italic;
+    padding: 0px;
+}
+
+.scrollbox td {
+  padding: 0.3rem 0.5rem;
+  text-align: left;     /* Links bündig */
+  border: none;         /* Keine Linien */
+  font-size: 0.8rem;
+  line-height: 1.2; /* z. B. 1.2 = kompakt, 1.6 = luftig */
+}
+
+#scrollbox td:first-child {
+	 width: 60%;
+}
+
+#scrollbox td:last-child {
+ 	width: 40%;
+}
+
+/* popup Overlay Submit*/
+#overlaySubmit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#overlaySubmitContent {
+  background: #fff;
+  padding-left: 10px;
+  padding-top: 20px;
+  border-radius: 16px;
+  text-align: left;
+  font-size: 0.8em;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  max-width: 90%;
+  width: 300px;
+  height: 320px;
+}
+
+#overlaySubmitText {
+  margin-bottom: 20px;
+  white-space: pre-line;
+}
+
+#closeOverlaySubmit {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  background: #2d6a2d;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  display: none;
+  justify-content: flex-center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* --- Zusätzliche Spinner-Stile für Download-Link ---*/
+#download-spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 5px; /* Abstand nach oben, falls nötig */
+}
+
+#download-spinner-container .spinner.small {
+  margin: 0 10px 0 0; /* Abstand zwischen Spinner und Text */
+}
+
+#download-spinner-text {
+  font-size: 0.9em;
+  color: #555;
+}
+
+
+/* popup Overlay Helferliste */
+#overlayHelferliste {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#overlayHelferliste-content {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 450px; /* Breiter als Rapport, um Tel. unterzubringen */
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+}
+
+#overlayHelferliste-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 5px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.overlayHelferliste-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+
+.scrollbox-helferliste {
+  max-height: 280px; /* Höher, da es nur eine Liste gibt */
+  overflow-x: auto; 
+}
+
+/* Tabellenstile für Helferliste Header */
+.scrollbox-helferliste th {
+  padding: 0.3rem 0.5rem;
+  text-align: left;
+  font-size: 0.8rem;
+  background-color: #eee;
+  position: sticky; /* Header bleibt beim Scrollen oben */
+  top: 0;
+  z-index: 1;
+  white-space: nowrap; 
+  cursor: pointer; /* Zeigt an, dass der Header klickbar ist */
+  user-select: none; /* Verhindert, dass der Text beim Klicken markiert wird */
+}
+
+/* Tabellenstile für Helferliste Body */
+.scrollbox-helferliste td {
+  padding: 0.3rem 0.5rem;
+  text-align: left; 
+  border: none;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  white-space: nowrap; 
+}
+
+/* Spaltenbreitenanpassung (optional) */
+.scrollbox-helferliste th:nth-child(1), .scrollbox-helferliste td:nth-child(1) {
+    width: 10%; /* Name */
+}
+.scrollbox-helferliste th:nth-child(2), .scrollbox-helferliste td:nth-child(2) {
+    width: 10%; /* Vorname */
+}
+.scrollbox-helferliste th:nth-child(3), .scrollbox-helferliste td:nth-child(3) {
+    width: 30%; /* Status */
+}
+.scrollbox-helferliste th:nth-child(4), .scrollbox-helferliste td:nth-child(4) {
+    width: 50%; /* Tel. */
+}
+
+
+/* Popups Overlay Geburtstage (Basis-Container) */
+#overlayGeburtstage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Wichtig: Standardmäßig ausgeblendet */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#overlayGeburtstage-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 5px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Inhalt-Container */
+#overlayGeburtstage-content {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 300px; 
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;
+}
+
+.scrollbox-geburtstage {
+    height: 200px;
+    margin-top: 15px;
+}
+
+/* Stil für die Monats-Header-Zeile */
+.month-header {
+    /* Hintergrundfarbe für die ganze Zeile */
+    background-color: #f0f8ff; /* Ein helles Blau */
+    border-top: 2px solid #ccc;
+}
+
+/* Stil für den Text im Header-Feld (die Zelle, die sich über 2 Spalten erstreckt) */
+.month-header td {
+    /* Entfernt die dünne untere Linie von der Standardzelle */
+    border-bottom: none; 
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+/* Stil für den strong-Tag (den eigentlichen Monatsnamen) */
+.month-header td strong {
+    /* Textfarbe */
+    color: #004d99; /* Dunkelblau für Kontrast */
+    
+    /* Unterstreichen */
+    text-decoration: underline; 
+    
+    /* Etwas größere Schrift */
+    font-size: 1.1em;
+}
+
+
