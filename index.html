@@ -1,4 +1,4 @@
-<!-- index.html 24.10.2025 -->
+<!-- index.html 23.11.2025 -->
 
 <!DOCTYPE html>
 <html>
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/Login.css">
     <link rel="stylesheet" href="css/Form.css">
     <link rel="stylesheet" href="css/Popup.css">
+    <link rel="stylesheet" href="css/Rapporte.css">
  
  
   <script>
@@ -30,7 +31,7 @@
     <div id="tafelHeader">
       <div class="titleArea">
         <h1 id="header-title">Tafel Sterkrade</h1>
-        <div class="version" id="version-login">Version 5.10.24-1</div>
+        <div class="version" id="version-login">Version 5.11.23-1</div>
                   <img src="TafelLogo.png" alt="Logo">
       </div>
     </div>
@@ -83,10 +84,14 @@
       <p id="status"></p>
       <div id="details"></div>
 
-      <div class="AnmeldeInfoBereich">
+      <!--<div class="AnmeldeInfoBereich">-->
+
+      <div id="anmeldeInfo" class="AnmeldeInfoBereich">
         <div id="anmeldeInfoTermin">AnmeldeInfo</div>
         <div id="anmeldeInfoFunc">0 Fahrer, 0 Ausgabe, 0 Registratur</div>
-        <button id="rapport-button" onclick="tagesRapport()">TagesRapport</button>
+        <div class="button-group-rapport ">
+          <button class="rapportbuttons" id="rapport-button" onclick="tagesRapportOeffnen()">TagesRapport</button>
+        </div>
       </div>
 
       <div class="button-group">
@@ -104,39 +109,10 @@
         </div>
     </div>
 
-<!-- overlay Rapport-->
-    <div id="overlayRapport">
-        <div id="overlayRapport-content">
-          <h2 id="overlayRapport-title">Tagesrapport</h2>
-
-          <h4 id="scrollboxAnmeldungen-title">Anmeldungen:</h4>
-          <p id="scrollboxAnmeldungenInfoFunc" class="scrollboxZusatzInfo" >0 Fahrer, 0 Ausgabe, 0 Registratur</p>
-          <div class="scrollbox scrollbox-anmeldungen">
-            <table id="scrollboxAnmeldungen-table"></table>
-          </div>
-
-          <h4 id="scrollboxAbmeldungen-title">ohne Anmeldung:</h4>
-          <p id="scrollboxAbmeldungenInfoFunc" class="scrollboxZusatzInfo" >0 Abmeldungen, 0 ohne Meldung</p>
-          <div class="scrollbox scrollbox-abmeldungen">
-            <table id="scrollboxAbmeldungen-table"></table>
-          </div>
-
-          <div id="downloadLink_Tagesrapport"></div>
-  
-          <div id="sendMailXLS_Tagesrapport"></div>
-
-          <div class="overlayRapport-buttons">
-            <button onclick="closeOverlayRapport()">Schließen</button>
-            <button onclick="downloadLinkRapport()">PDF-Datei</button>
-            <button onclick="sendmailXLSRapport()">XLSX-Datei</button>
-          </div>
-        </div>
-    </div>
-
 <!-- overlay Helferliste-->
     <div id="overlayHelferliste" style="display: none;">
       <div id="overlayHelferliste-content">
-        <div id="overlayHelferliste-title"></div>
+        <div id="overlayHelferliste-title" class="overlay-title"></div>
 
         <h3 id="scrollboxHelferliste-title">Helfer: 0</h3>
 
@@ -160,7 +136,7 @@
         <div id="sendMailXLS_Helferliste"></div>
 
         <div class="overlayHelferliste-buttons">
-            <button onclick="closeOverlayHelferliste()">Schließen</button>
+            <button onclick="closeOverlay('overlayHelferliste')">Schließen</button>
             <button onclick="downloadLinkHelferliste()">PDF-Datei</button>
             <button onclick="sendmailXLSHelferliste()">XLS-Datei</button>
         </div>
@@ -171,16 +147,59 @@
 <!-- overlay Geburtstage-->
     <div id="overlayGeburtstage">
       <div id="overlayGeburtstage-content">
-        <div id="overlayGeburtstage-title">Geburtstage der Tafel-Helfer</div>
+        <div id="overlayGeburtstage-title" class="overlay-title">Geburtstage der Tafel-Helfer</div>
 
         <h4 id="scrollboxGeburtstage-title">bevorstehende Geburtstage:</h4>
         <div class="scrollbox scrollbox-geburtstage">
           <table id="scrollboxGeburtstage-table"></table>
         </div>
 
-        <button class="close-button" onclick="closeOverlayGeburtstage()">Schließen</button>
+        <button class="close-button" onclick="closeOverlay('overlayGeburtstage')">Schließen</button>
         
       </div>
+    </div>
+
+<!-- overlay Rapport -->
+    <div id="overlayRapport">
+        <div id="overlayRapport-content">
+          <h2 id="overlayRapport-title" class="overlay-title">Tagesrapport</h2>
+
+          <div class="view-toggle-area">
+            <label class="checkbox-container">
+              <input type="checkbox" id="preview-toggle" onchange="toggleRapportView(event)">
+                <span class="checkmark"></span>
+                Vorschau-Ansicht
+            </label>
+          </div>
+
+          <div id="scrollbox-view" class="rapport-view">
+            <h4 id="scrollboxAnmeldungen-title">Anmeldungen:</h4>
+            <p id="scrollboxAnmeldungenInfoFunc" class="scrollboxZusatzInfo" >0 Fahrer, 0 Ausgabe, 0 Registratur</p>
+            <div class="scrollbox scrollbox-anmeldungen">
+              <table id="scrollboxAnmeldungen-table"></table>
+            </div>
+
+            <h4 id="scrollboxAbmeldungen-title">ohne Anmeldung:</h4>
+            <p id="scrollboxAbmeldungenInfoFunc" class="scrollboxZusatzInfo" >0 Abmeldungen, 0 ohne Meldung</p>
+            <div class="scrollbox scrollbox-abmeldungen">
+              <table id="scrollboxAbmeldungen-table"></table>
+            </div>
+          </div>
+
+          <div id="preview-view" class="rapport-view hidden">
+            <div id="previewContainer" class="preview-area">
+            </div>
+            <img src="TafelLogo.png" alt="Logo">
+          </div>
+
+          <div id="export_meldung"></div>
+
+          <div class="overlayRapport-buttons">
+            <button onclick="closeOverlay('overlayRapport')">Schließen</button>
+            <button onclick="downloadLinkRapport()">PDF-Datei</button>
+            <button onclick="sendmailXLSRapport()">XLSX-Datei</button>
+          </div>
+        </div>
     </div>
 
 <!-- popup -->
