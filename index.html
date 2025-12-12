@@ -1,4 +1,4 @@
-<!-- index.html 23.11.2025 -->
+<!-- index.html 12.12.2025 -->
 
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,7 @@
     <div id="tafelHeader">
       <div class="titleArea">
         <h1 id="header-title">Tafel Sterkrade</h1>
-        <div class="version" id="version-login">Version 5.11.23-1</div>
+        <div class="version" id="version-login">Version 5.12.12-1</div>
                   <img src="TafelLogo.png" alt="Logo">
       </div>
     </div>
@@ -95,8 +95,9 @@
       </div>
 
       <div class="button-group">
-        <button id="helferliste-button" onclick="helferlisteOeffnen()">Helferliste</button>
-        <button id="geburtstage-button" onclick="geburtstageOeffnen()">Geburtstage</button>
+        <button class="groupbuttons" id="helferliste-button" onclick="helferlisteOeffnen()">Helferliste</button>
+        <button class="groupbuttons" id="geburtstage-button" onclick="geburtstageOeffnen()">Geburtstage</button>
+        <button class="groupbuttons hidden" id="overlayInfo-button" onclick="showOverlayInfo()" >Info</button>
       </div>
     </section>
   </div>
@@ -202,6 +203,32 @@
         </div>
     </div>
 
+<!-- overlay AdminInfo -->
+<div id="overlayInfo">
+    <div id="overlayInfo-content">
+        <h2 id="overlayInfo-title" class="overlay-title">Wichtige Information</h2>
+
+        <div id="info-text-area">
+            <p id="overlayInfo-text"></p> 
+        </div>
+
+        <div id="decision-options" class="decision-group">
+            <label class="radio-label">
+                <input type="radio" name="infoDecision" value="dabei">Ich bin dabei
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="infoDecision" value="nicht_dabei" >Ich bin nicht dabei
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="infoDecision" value="weiss_nicht" >Ich weiß noch nicht
+            </label>
+        </div>
+
+        <button id="close-info-overlay" class="close-button" onclick="closeOverlayInfo()" >Schließen</button> 
+        
+    </div>
+</div>    
+
 <!-- popup -->
     <div id="popup" style="display: none;">
         <div id="popup-content">
@@ -221,6 +248,7 @@
     <script src="js/Rapport.js"></script>
     <script src="js/Helferliste.js"></script>
     <script src="js/Geburtstage.js"></script>
+    <script src="js/Info.js"></script>
 
 
   </body>
