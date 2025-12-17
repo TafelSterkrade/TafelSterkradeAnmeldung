@@ -1,0 +1,256 @@
+/* --- rapporte.css 23.11.2025  ---------*/
+/* popup Overlay Tagesrapport*/
+#overlayRapport {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#overlayRapport-content {
+  position: relative; /* WICHTIG: Macht den Inhalt des Overlays zum Nullpunkt (top: 0, left: 0) */
+  padding-top: 10px; 
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 380px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+  background-color: white;
+}
+
+.view-toggle-area {
+  margin-top: -10px;
+}
+
+.overlayRapport-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;               
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+
+
+/* Container für die Tabelle */
+#rapporte-tabelle {
+    /* Optional: falls die Tabelle scrollbar sein soll */
+    max-height: 250px; 
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Die eigentliche Tabelle */
+#rapporte-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    border: 1px solid #ccc; /* Rahmen um die gesamte Tabelle */
+    background-color: white; /* Stellen Sie sicher, dass der Tabellenhintergrund weiß ist */
+}
+
+#rapporte-data-table th,
+#rapporte-data-table td {
+    border: 1px solid #ccc;
+    padding: 8px 10px; /* Etwas mehr Padding für bessere Lesbarkeit */
+    text-align: left;
+    /* Wichtig: Alle Zellen sollen den Zeilen-Hintergrund erben (Standard ist Weiß) */
+    background-color: transparent; 
+}
+
+/* Tabellenkopf (Überschriften) */
+#rapporte-data-table th {
+    background-color: #333; /* Dunkler Hintergrund */
+    color: white;
+    font-weight: bold;
+    position: static; /* Wichtig für scrollbare Container */
+    top: auto;
+    z-index: 10;
+}
+
+/* Zeilenstile */
+/* **WICHTIG:** Entfernen der abwechselnden Hintergrundfarbe (Streifenoptik) */
+#rapporte-data-table tbody tr:nth-child(even) {
+    background-color: transparent; 
+}
+
+/* Normale Zeilen sind Weiß. Nur der Hover-Effekt ändert die Farbe leicht. */
+#rapporte-data-table tbody tr:hover {
+    background-color: #e6e6e6; /* Hervorhebung bei Hover (Standard) */
+}
+
+
+/* 2. Aktionsspalte: Buttons nebeneinander und klein */
+#rapporte-data-table td.action-cell {
+    min-height: 30px; 
+    padding: 4px 8px; 
+    width: 80px; 
+    text-align: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* Stilregeln für die Buttons in der Aktionsspalte */
+#rapporte-data-table td.action-cell button {
+    width: 24px;
+    height: 24px;
+    line-height: 1; 
+    padding: 0;
+    margin: 0 3px; 
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px; 
+    transition: background-color 0.2s;
+}
+
+#rapporte-data-table td.action-cell button:hover {
+    background-color: #ddd;
+}
+
+
+.abfrage-inhalt {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 330px; /* Feste Höhe und Breite */
+    overflow-y: auto;  /* Scrollen wird auf das Inhaltsfenster beschränkt */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.download-btn {
+    background-color: #e0e0ff;
+}
+
+.delete-btn {
+    background-color: #f0eaeae8;
+}
+
+.preview-btn {
+    background-color: #7ba88ee8;
+}
+
+
+#rapporte-data-table td.action-cell button:hover {
+    background-color: #ddd;
+}
+
+
+/* Overlay Preview */
+.overlay-title{
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 5px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+
+/* Referenzpunkt für die Positionierung */
+.preview-area {
+    width: 100%;
+    height: 400px; /* Beispielwert, kannst du anpassen */
+    background-color: #e0e0ff;
+}
+
+/* Styling für den Container */
+#previewContainer {
+    overflow-x: auto; /* Wichtig für breite Tabellen */
+    max-height: 70vh; /* Begrenzt die Höhe des Vorschau-Bereichs */
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.rapport-view {
+    width: 100%;
+    height: 400px; /* Beispielwert, kannst du anpassen */
+}
+
+.rapport-view img {
+  width: 26px;
+  position: absolute;
+  top: 85px;
+  left: 25px;
+}
+
+
+
+/* Grundlegendes Styling der Tabelle */
+.preview-table {
+    width: 100%;
+    border-collapse: collapse; /* Zellenränder verschmelzen */
+    border: none; /* Stellt sicher, dass die äußere Tabelle keinen Rahmen hat */
+    font-family: Calibri; /* Schriftart festlegen */
+    table-layout: fixed; /* Automatische Spaltenbreite */
+
+    /*font-size: 7px;*/
+}
+
+/* Zellen und Zeilen */
+.preview-table th, 
+.preview-table td {
+    /* border: 1px solid #ddd;  */
+    border: none; /* <-- WICHTIG: Entfernt alle sichtbaren Gitternetzlinien */
+    padding: 0px 0px;
+    text-align: left;
+    white-space: nowrap; /* Verhindert Zeilenumbruch in Zellen */
+    overflow: hidden; /* Wichtig, falls Inhalt nicht passt */
+    text-overflow: ellipsis; /* Füllt zu lange Texte mit Auslassungspunkten */
+}
+
+/* Kopfzeile (<th>) */
+.preview-table th {
+    background-color: #f2f2f2; /* Hellgrauer Hintergrund */
+    color: #333;
+    font-weight: bold;
+    position: static; /* Hält die Kopfzeile beim Scrollen oben */
+    top: auto;
+    z-index: 10;
+}
+
+/* Abwechselnde Zeilenfarben (für bessere Lesbarkeit) */
+.preview-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Maus-Hover-Effekt */
+.preview-table tr:hover {
+    background-color: #e9e9e9;
+}
+
+
+
+/* Responsive Anpassungen */
+@media (max-width: 600px) {
+    #rapporte-data-table {
+        font-size: 12px;
+    }
+    #rapporte-data-table th,
+    #rapporte-data-table td {
+        padding: 6px 8px;
+    }
+    
+    /* Buttons auf kleinen Screens noch kleiner machen */
+    #rapporte-data-table td.action-cell button {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+    #rapporte-data-table td.action-cell {
+        width: 60px; /* Schmaler Aktionsbereich */
+    }
+}
